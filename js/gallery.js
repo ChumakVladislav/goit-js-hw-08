@@ -87,14 +87,23 @@ function onClick(e) {
 
   instance.show();
 
+  const modalImage = document.querySelector('.modal-image');
+  modalImage.addEventListener('click', modalClick);
+
+  function modalClick(e) {
+    if (e.target.nodeName === 'IMG') {
+      instance.close();
+    }
+  }
+
   window.addEventListener('keydown', keyDownFoo);
-}
 
-function keyDownFoo(e) {
-  console.log(e);
+  function keyDownFoo(e) {
+    console.log(e);
 
-  if (e.code === `Escape`) {
-    instance.close();
-    window.removeEventListener('keydown', keyDownFoo);
+    if (e.code === `Escape`) {
+      instance.close();
+      window.removeEventListener('keydown', keyDownFoo);
+    }
   }
 }
